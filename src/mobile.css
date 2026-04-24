@@ -1,0 +1,116 @@
+/* ============ Mobile refinements (≤ 720px) ============
+   Central tuning layer for the Pompolarr Modu landing page.
+   Everything here is additive — uses the existing class names.
+*/
+
+@media (max-width: 720px) {
+  /* Container + section rhythm */
+  .container { padding: 0 18px; }
+  .section { padding: 72px 0; }
+
+  /* Type scales dial down (clamp already does most of the work, but we
+     want Thai-heavy copy tighter and serif display not to wrap weirdly) */
+  .display { font-size: clamp(40px, 10vw, 54px); line-height: 1.02; }
+  .h2      { font-size: clamp(28px, 7.5vw, 38px); line-height: 1.06; }
+  .h3      { font-size: 20px; }
+  .lede    { font-size: 15px; line-height: 1.62; }
+
+  /* Nav chip */
+  .nav { top: 10px; }
+  .nav-inner { gap: 10px; padding: 8px 8px 8px 14px; }
+  .nav-brand { font-size: 14px; }
+  .nav-brand .glyph { width: 22px; height: 22px; font-size: 11px; }
+
+  /* ---------- Hero ---------- */
+  #hero { padding: 96px 0 40px !important; min-height: auto !important; }
+  #hero .display { max-width: none !important; }
+  #hero .hero-grid { margin-top: 36px !important; }
+  #hero .hero-grid > div:last-child { min-height: 360px !important; aspect-ratio: 4/5 !important; }
+  /* Trust row: 3-up → 1 column stack with separators */
+  .hero-trust { flex-direction: column !important; gap: 14px !important; }
+  .hero-trust > div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+  .hero-trust > div > div:first-child { flex: 0 0 auto; }
+  /* Price row wraps cleanly */
+  .hero-price { flex-wrap: wrap; row-gap: 8px; }
+  .hero-price .hr { display: none; }
+  /* Floating metric cards sit inline + smaller */
+  #hero .metric { transform: none !important; position: static !important; }
+  .hero-metrics {
+    position: absolute !important;
+    left: 12px !important; right: 12px !important;
+    bottom: 12px !important; top: auto !important;
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .hero-metrics .metric { padding: 10px 12px; border-radius: 10px; flex: 1 1 auto; }
+  .hero-metrics .metric .v { font-size: 22px; }
+
+  /* Kinetic headline */
+  #hero .display br { display: inline; }
+
+  /* Scroll hint */
+  #hero .scroll-hint { display: none !important; }
+
+  /* ---------- Why Modu (pillars) ---------- */
+  .pillar { padding: 40px 24px !important; }
+  .pillar .p-num { font-size: 48px !important; }
+
+  /* Modes dark panel */
+  #modes .modes-grid { gap: 32px !important; }
+  #modes .mode-switch { flex-wrap: wrap; gap: 6px !important; }
+  #modes .mode-switch > button { flex: 1 1 calc(33% - 6px); font-size: 11px !important; padding: 10px 10px !important; }
+
+  /* ---------- Anatomy ---------- */
+  #anatomy .anatomy-grid { gap: 36px !important; }
+  #anatomy .hotspots button { transform: scale(.85); }
+
+  /* ---------- Gallery ---------- */
+  #gallery .gallery-head { margin-bottom: 28px !important; gap: 20px !important; }
+  #gallery .gallery-grid { gap: 14px !important; }
+
+  /* ---------- Compare table (3 cols → stacked rows) ---------- */
+  .compare-row-head { display: none !important; }
+  .compare-row {
+    grid-template-columns: 1fr !important;
+    padding: 22px 20px !important;
+    gap: 14px;
+  }
+  .compare-row > .compare-metric { border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .compare-row > .compare-cell { display: grid !important; grid-template-columns: auto 1fr; align-items: baseline; gap: 14px; }
+  .compare-row > .compare-cell::before {
+    content: attr(data-label);
+    font-family: var(--f-mono); font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--mute);
+  }
+  .compare-row > .compare-cell .serif { font-size: 24px !important; }
+
+  /* ---------- Specs ---------- */
+  #specs .specs-grid { gap: 32px !important; }
+  #specs .specs-group { margin-top: 32px !important; }
+
+  /* ---------- Stories ---------- */
+  #stories .stories-head { margin-bottom: 40px !important; gap: 24px !important; }
+  #stories .stats-row { gap: 20px !important; }
+  #stories .stats-row > div .v { font-size: 28px !important; }
+  #stories .stories-grid { gap: 14px !important; }
+  #stories figure { padding: 24px !important; min-height: 0 !important; }
+
+  /* ---------- FAQ ---------- */
+  #faq .faq-grid { gap: 28px !important; }
+  #faq .faq-row { padding: 20px 0 !important; }
+  #faq .faq-row button { font-size: 16px !important; gap: 14px !important; }
+
+  /* ---------- CTA ---------- */
+  #cta { padding: 80px 0 !important; }
+  #cta .cta-grid { gap: 32px !important; }
+  #cta .cta-grid .btn { width: 100%; justify-content: center; }
+  #cta .cta-row { flex-direction: column !important; align-items: stretch !important; }
+
+  /* Tweaks panel — keep out of the way, dock at top-right */
+  .tweaks-panel { right: 12px !important; bottom: 12px !important; max-width: calc(100vw - 24px) !important; }
+}
+
+/* Small-phone (≤ 380px): nudge a bit more */
+@media (max-width: 380px) {
+  .display { font-size: 38px; }
+  .nav-brand span.brand-full { display: none; }
+}

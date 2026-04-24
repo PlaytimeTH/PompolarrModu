@@ -1,0 +1,177 @@
+/* ============ Product illustration helpers (CSS-only stroller marks) ============ */
+/* We keep placeholders labeled and neutral — you'll drop real photography in. */
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, var(--bone-2) 0%, var(--peach) 60%, var(--sand) 100%);
+  border-radius: 2px;
+}
+.photo::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(30,27,22,.04) 0 1px, transparent 1px 14px);
+  pointer-events: none;
+}
+.photo-dark {
+  background:
+    radial-gradient(120% 90% at 20% 0%, #4a3c2c 0%, #2e2518 55%, #1b1510 100%);
+}
+.photo-moss {
+  background:
+    linear-gradient(160deg, #8B9673 0%, #6B7556 55%, #4F5A3F 100%);
+}
+.photo-label {
+  position: absolute; left: 20px; bottom: 18px;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  background: rgba(30,27,22,.55);
+  padding: 6px 10px;
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+}
+.photo-label-ink {
+  color: var(--ink-3);
+  background: rgba(255,255,255,.65);
+}
+
+/* Simple stylized stroller silhouette — geometric only, not realistic */
+.stroller-mark {
+  position: relative;
+  width: 100%; height: 100%;
+  display: grid; place-items: center;
+}
+.stroller-mark svg {
+  width: 62%; height: auto;
+  color: rgba(30,27,22,.28);
+}
+
+/* Badges / pills */
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: rgba(255,255,255,.5);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  backdrop-filter: blur(8px);
+}
+.pill .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--clay);
+}
+
+/* Floating metric card */
+.metric {
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 20px 40px -20px rgba(30,27,22,.15);
+}
+.metric .k {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.metric .v {
+  font-family: var(--f-serif);
+  font-size: 28px;
+  line-height: 1;
+  margin-top: 4px;
+  letter-spacing: -.01em;
+}
+.metric .u {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+/* Nav */
+.nav {
+  position: fixed;
+  top: 18px; left: 0; right: 0;
+  z-index: 80;
+  display: flex; justify-content: center;
+  pointer-events: none;
+}
+.nav-inner {
+  pointer-events: auto;
+  display: flex; align-items: center; gap: 28px;
+  padding: 10px 14px 10px 18px;
+  background: rgba(245,240,232,.82);
+  backdrop-filter: blur(18px) saturate(1.1);
+  border: 1px solid rgba(217,207,187,.7);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px -20px rgba(30,27,22,.3);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--f-serif);
+  font-size: 16px;
+  letter-spacing: -.01em;
+}
+.nav-brand .glyph {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bone);
+  display: grid; place-items: center;
+  font-family: var(--f-serif);
+  font-size: 13px;
+  font-style: italic;
+}
+.nav-links {
+  display: flex; gap: 22px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.nav-links a {
+  text-decoration: none; color: inherit;
+  position: relative;
+  padding: 4px 0;
+  transition: color .2s var(--ease);
+}
+.nav-links a:hover { color: var(--clay); }
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+}
+
+/* Side rail (section index) */
+.rail {
+  position: fixed;
+  right: 26px; top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  display: flex; flex-direction: column; gap: 12px;
+  pointer-events: none;
+}
+.rail .r-dot {
+  pointer-events: auto;
+  display: flex; align-items: center; gap: 10px;
+  justify-content: flex-end;
+  cursor: pointer;
+  color: var(--ink-3);
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .5;
+  transition: opacity .2s var(--ease), color .2s var(--ease);
+}
+.rail .r-dot .b { width: 18px; height: 1px; background: currentColor; transition: width .3s var(--ease); }
+.rail .r-dot:hover { opacity: 1; }
+.rail .r-dot.active { opacity: 1; color: var(--ink); }
+.rail .r-dot.active .b { width: 36px; background: var(--clay); }
+.rail .r-dot .label { opacity: 0; transition: opacity .2s var(--ease); }
+.rail .r-dot:hover .label, .rail .r-dot.active .label { opacity: 1; }
+@media (max-width: 1080px) { .rail { display: none; } }
